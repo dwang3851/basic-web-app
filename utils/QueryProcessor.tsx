@@ -11,7 +11,26 @@ export default function QueryProcessor(query: string): string {
       "dfwang"
     );
   }
-  
+  const matchp = query.match(/Which of the following numbers are prime: (.+)\?/i);
+
+  if (matchp) {
+      const numbers = matchp[1].split(',').map(num => parseInt(num.trim()));
+      function isPrime(num) {
+          if (num <= 1) return false;
+          if (num <= 3) return true;
+          if (num % 2 === 0 || num % 3 === 0) return false;
+          for (let i = 5; i * i <= num; i += 6) {
+              if (num % i === 0 || num % (i + 2) === 0) return false;
+          }
+          return true;
+      }
+      const primes = numbers.filter(num => isPrime(num));
+      if (primes.length > 0) {
+            return primes.join(', ');
+      } else {
+            return "None";
+        }
+  }
   const match0 = query.match(/What is (\d+) plus (\d+) plus (\d+)\?/i);
   if (match0){
     const num1 = parseInt(match0[1]);
