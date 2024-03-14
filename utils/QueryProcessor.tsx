@@ -43,6 +43,26 @@ export default function QueryProcessor(query: string): string {
         
         return product.toString(); // Convert product to string
   }
+
+  const match4 = query.match(/Which of the following numbers is both a square and a cube: (.+)\?/i);
+
+  if (match4) {
+        // Extract the numbers from the matched group
+        const numbers = match4[1].split(',').map(num => parseInt(num.trim()));
+
+        // Find the number that is both a square and a cube
+        const result = numbers.find(num => {
+            const squareRoot = Math.sqrt(num);
+            const cubeRoot = Math.cbrt(num);
+            return Number.isInteger(squareRoot) && Number.isInteger(cubeRoot);
+        });
+
+        if (result !== undefined) {
+            return result.toString(); // Convert result to string
+        } else {
+            return "None of the given numbers is both a square and a cube.";
+        }
+  }
   
   if (query.toLowerCase().includes("your name")) {
     return (
