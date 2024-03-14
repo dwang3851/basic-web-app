@@ -31,6 +31,19 @@ export default function QueryProcessor(query: string): string {
         
     return largest.toString(); // Convert largest number to strin
   }
+  const match3 = query.match(/What is (\d+) multiplied by (\d+)\?/i);
+
+  if (match3) {
+        // Extract the numbers from the matched groups
+        const num1 = parseInt(match3[1]);
+        const num2 = parseInt(match3[2]);
+
+        // Calculate the product
+        const product = num1 * num2;
+        
+        return product.toString(); // Convert product to string
+  }
+  
   if (query.toLowerCase().includes("your name")) {
     return (
       "David Wang"
