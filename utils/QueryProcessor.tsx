@@ -63,6 +63,31 @@ export default function QueryProcessor(query: string): string {
             return "None of the given numbers is both a square and a cube.";
         }
   }
+  const match5 = query.match(/What is (\d+) minus (\d+)\?/i);
+
+  if (match5) {
+        // Extract the numbers from the matched groups
+        const num1 = parseInt(match5[1]);
+        const num2 = parseInt(match5[2]);
+
+        // Calculate the product
+        const product = num1 - num2;
+        
+        return product.toString(); // Convert product to string
+  }
+
+  const match6 = query.match(/What is (\d+) divided by (\d+)\?/i);
+
+  if (match6) {
+        // Extract the numbers from the matched groups
+        const num1 = parseInt(match6[1]);
+        const num2 = parseInt(match6[2]);
+
+        // Calculate the product
+        const product = num1 / num2;
+        
+        return product.toString(); // Convert product to string
+  }
   
   if (query.toLowerCase().includes("your name")) {
     return (
