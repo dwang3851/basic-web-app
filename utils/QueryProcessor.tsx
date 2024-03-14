@@ -74,6 +74,15 @@ export default function QueryProcessor(query: string): string {
       const product = num1 / num2;
       return product.toString();
   }
+
+  const match7 = query.match(/What is (\d+) to the power of (\d+)\?/i);
+
+  if (match7) {
+      const base = parseInt(match7[1]);
+      const exponent = parseInt(match7[2]);
+      const result = Math.pow(base, exponent);
+      return result.toString();
+  }
   
   if (query.toLowerCase().includes("your name")) {
     return (
