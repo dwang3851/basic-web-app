@@ -11,7 +11,8 @@ export default function QueryProcessor(query: string): string {
       "dfwang"
     );
   }
-  if (query.match(/What is (\d+) plus (\d+)\?/i)){
+  const match = query.match(/What is (\d+) plus (\d+)\?/i);
+  if (match){
     const num1 = parseInt(match[1]);
     const num2 = parseInt(match[2]);
 
@@ -20,8 +21,10 @@ export default function QueryProcessor(query: string): string {
         
     return sum.toString();
   }
-  if ( query.match(/Which of the following numbers is the largest: (.+)\?/i);){
-    const numbers = match[1].split(',').map(num => parseInt(num.trim()));
+  const match2 = query.match(/Which of the following numbers is the largest: (.+)\?/i);
+
+  if (match2){
+    const numbers = match2[1].split(',').map(num => parseInt(num.trim()));
 
         // Find the largest number
     const largest = Math.max(...numbers);
