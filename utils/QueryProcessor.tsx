@@ -11,6 +11,15 @@ export default function QueryProcessor(query: string): string {
       "dfwang"
     );
   }
+  if {query.match(/What is (\d+) plus (\d+)\?/i)}{
+    const num1 = parseInt(match[1]);
+    const num2 = parseInt(match[2]);
+
+        // Calculate the sum
+    const sum = num1 + num2;
+        
+    return sum.toString();
+  }
   if (query.toLowerCase().includes("your name")) {
     return (
       "David Wang"
