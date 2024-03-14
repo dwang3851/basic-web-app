@@ -12,6 +12,15 @@ export default function QueryProcessor(query: string): string {
     );
   }
   
+  const match0 = query.match(/What is (\d+) plus (\d+) plus (\d+)\?/i);
+  if (match){
+    const num1 = parseInt(match[1]);
+    const num2 = parseInt(match[2]);
+    const num3 = parseInt(match[3]);
+    const sum = num1 + num2 + num3;
+    return sum.toString();
+  }
+  
   const match = query.match(/What is (\d+) plus (\d+)\?/i);
   if (match){
     const num1 = parseInt(match[1]);
